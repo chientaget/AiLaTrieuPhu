@@ -1,22 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ailatrieuphu;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.AbstractBorder;
 import java.awt.geom.RoundRectangle2D;
-import javax.swing.BorderFactory;
-import javax.swing.border.BevelBorder;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.UIManager;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -26,12 +21,13 @@ public class Login extends javax.swing.JFrame {
     private int mouseX, mouseY;
 
     public Login() {
-        
+
         setUndecorated(true);
         initComponents();
         LOAD();
     }
-    void LOAD(){
+
+    void LOAD() {
         makePanelDraggable(jPanel1);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 4, 4));
 
@@ -41,6 +37,46 @@ public class Login extends javax.swing.JFrame {
         CompoundBorder compoundBorder = new CompoundBorder(lineBorder, emptyBorder);
         jPanel1.setBorder(compoundBorder);
     }
+
+    private void makePanelDraggable(javax.swing.JPanel panel) {
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
+            }
+        });
+
+        panel.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent evt) {
+                int x = evt.getXOnScreen() - mouseX;
+                int y = evt.getYOnScreen() - mouseY;
+
+                setLocation(x, y);
+            }
+        });
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,8 +86,8 @@ public class Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lb_Acc = new javax.swing.JLabel();
+        lb_Pass = new javax.swing.JLabel();
         btn_Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btn_unHide = new javax.swing.JLabel();
@@ -77,17 +113,16 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Chào bạn . Chúng ta cùng bắt đầu nào");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tài khoản");
+        lb_Acc.setForeground(new java.awt.Color(255, 255, 255));
+        lb_Acc.setText("Tài khoản");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Mật Khẩu");
+        lb_Pass.setForeground(new java.awt.Color(255, 255, 255));
+        lb_Pass.setText("Mật Khẩu");
 
         btn_Login.setBackground(new java.awt.Color(0, 0, 0));
         btn_Login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Login.setForeground(new java.awt.Color(255, 255, 255));
         btn_Login.setText("Đăng Nhập");
-        btn_Login.setBorder(null);
         btn_Login.setBorderPainted(false);
         btn_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,8 +159,9 @@ public class Login extends javax.swing.JFrame {
         chx_save.setBackground(new java.awt.Color(153, 153, 255));
         chx_save.setForeground(new java.awt.Color(255, 255, 255));
         chx_save.setText("Lưu cho lần sau");
-        chx_save.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        chx_save.setOpaque(true);
+        chx_save.setBorder(null);
+        chx_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chx_save.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
 
         txt_UserName.setBackground(new java.awt.Color(153, 153, 255));
         txt_UserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -180,8 +216,8 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(chx_save))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
+                                    .addComponent(lb_Pass)
+                                    .addComponent(lb_Acc))
                                 .addGap(210, 210, 210)))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -206,7 +242,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(65, 65, 65)
-                .addComponent(jLabel3)
+                .addComponent(lb_Acc)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -215,7 +251,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
                 .addGap(33, 33, 33)
-                .addComponent(jLabel4)
+                .addComponent(lb_Pass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -255,9 +291,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
-        this.setVisible(false);
-        Home home = new Home();
-        home.setVisible(true);
+
+        // Kiểm tra thong tin nhập vào đã đầy đủ sẽ cueyrn form
+        JPasswordField[] passwordFields = {txt_UserName, txt_Password};
+        JLabel[] labels = {lb_Acc, lb_Pass};
+
+        boolean hasEmptyField = false;
+
+        for (int i = 0; i < passwordFields.length; i++) {
+            if (passwordFields[i].getPassword().length == 0) {
+                labels[i].setForeground(Color.RED);
+                hasEmptyField = true;
+            } else {
+                labels[i].setForeground(Color.WHITE);
+            }
+        }
+
+        if (!hasEmptyField) {
+            this.setVisible(false);
+            Home home = new Home();
+            home.setVisible(true);
+        }
+
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     private void Close_FormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Close_FormActionPerformed
@@ -273,55 +328,13 @@ public class Login extends javax.swing.JFrame {
     private void btn_unHideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_unHideMouseClicked
 
     }//GEN-LAST:event_btn_unHideMouseClicked
-    private void makePanelDraggable(javax.swing.JPanel panel) {
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                mouseX = e.getX();
-                mouseY = e.getY();
-            }
-        });
 
-        panel.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent evt) {
-                int x = evt.getXOnScreen() - mouseX;
-                int y = evt.getYOnScreen() - mouseY;
-
-                setLocation(x, y);
-            }
-        });
-    }
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-
- /*
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-         */
-        //</editor-fold>
-        /* Create and display the form */
+        
+        FlatRobotoFont.install();
+        FlatLaf.registerCustomDefaultsSource("tableview");
+        UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
+        FlatMacLightLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
@@ -331,7 +344,7 @@ public class Login extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close_Form;
     private javax.swing.JButton btn_Login;
@@ -340,13 +353,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox chx_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lb_Acc;
+    private javax.swing.JLabel lb_Pass;
     private javax.swing.JPasswordField txt_Password;
     private javax.swing.JPasswordField txt_UserName;
     // End of variables declaration//GEN-END:variables
