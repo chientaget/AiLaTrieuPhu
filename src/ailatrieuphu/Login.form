@@ -97,7 +97,7 @@
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel5" min="-2" pref="48" max="-2" attributes="0"/>
-                              <Component id="btn_unHide" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="btn_HidePass" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -145,7 +145,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btn_unHide" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btn_HidePass" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="chx_save" min="-2" max="-2" attributes="0"/>
@@ -232,14 +232,14 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="btn_unHide">
+        <Component class="javax.swing.JLabel" name="btn_HidePass">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/Hide.png"/>
+              <Image iconType="3" name="/img/UnHide.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_unHideMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_HidePassMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">

@@ -82,7 +82,6 @@ public class Home extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(1600, 900));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1600, 900));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

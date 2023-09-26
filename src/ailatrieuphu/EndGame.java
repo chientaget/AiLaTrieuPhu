@@ -21,7 +21,7 @@ public class EndGame extends javax.swing.JFrame {
     private int mouseX, mouseY;
 
     private static Icon[] icons = {
-       // new ImageIcon(EndGame.class.getClassLoader().getResource("img/qua00.png")),
+        // new ImageIcon(EndGame.class.getClassLoader().getResource("img/qua00.png")),
         new ImageIcon(EndGame.class.getClassLoader().getResource("img/qua01.png")),
         new ImageIcon(EndGame.class.getClassLoader().getResource("img/qua02.png")),
         new ImageIcon(EndGame.class.getClassLoader().getResource("img/qua03.png")),
@@ -132,6 +132,11 @@ public class EndGame extends javax.swing.JFrame {
         btn_ResetGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Reset_1.png"))); // NOI18N
         btn_ResetGame.setText("Chơi Lại");
         btn_ResetGame.setBorderPainted(false);
+        btn_ResetGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ResetGameActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_ResetGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 220, 60));
         btn_ResetGame.setBorderPainted(false);
         btn_ResetGame.setFocusPainted(false);
@@ -217,9 +222,15 @@ public class EndGame extends javax.swing.JFrame {
 
         // mở quà
         SetIconRandom(btn_openQua);
-        
+
 
     }//GEN-LAST:event_btn_openQuaMouseClicked
+
+    private void btn_ResetGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ResetGameActionPerformed
+        setVisible(false);
+        Dashboard Das = new Dashboard();
+        Das.setVisible(true);
+    }//GEN-LAST:event_btn_ResetGameActionPerformed
 
     public static void main(String args[]) {
 

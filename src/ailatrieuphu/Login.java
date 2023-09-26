@@ -9,6 +9,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.UIManager;
@@ -19,6 +21,7 @@ import javax.swing.border.LineBorder;
 public class Login extends javax.swing.JFrame {
 
     private int mouseX, mouseY;
+    private boolean PassShow = false;
 
     public Login() {
 
@@ -57,26 +60,6 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,7 +73,7 @@ public class Login extends javax.swing.JFrame {
         lb_Pass = new javax.swing.JLabel();
         btn_Login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        btn_unHide = new javax.swing.JLabel();
+        btn_HidePass = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txt_Password = new javax.swing.JPasswordField();
         btn_Reg = new javax.swing.JLabel();
@@ -132,10 +115,10 @@ public class Login extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Male User.png"))); // NOI18N
 
-        btn_unHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hide.png"))); // NOI18N
-        btn_unHide.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_HidePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/UnHide.png"))); // NOI18N
+        btn_HidePass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_unHideMouseClicked(evt);
+                btn_HidePassMouseClicked(evt);
             }
         });
 
@@ -222,7 +205,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_unHide, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_HidePass, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -258,7 +241,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_unHide, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_HidePass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chx_save)
                 .addGap(30, 30, 30)
@@ -307,11 +290,19 @@ public class Login extends javax.swing.JFrame {
             }
         }
 
-        if (!hasEmptyField) {
+        if (new String(txt_UserName.getPassword()).equals("admin") && !hasEmptyField) {
             this.setVisible(false);
-            Home home = new Home();
-            home.setVisible(true);
+            Admin_System admin = new Admin_System();
+            admin.setVisible(true);
+        } else {
+            if (!hasEmptyField) {
+
+                this.setVisible(false);
+                Home home = new Home();
+                home.setVisible(true);
+            }
         }
+
 
     }//GEN-LAST:event_btn_LoginActionPerformed
 
@@ -325,12 +316,27 @@ public class Login extends javax.swing.JFrame {
         Reg.setVisible(true);
     }//GEN-LAST:event_btn_RegMouseClicked
 
-    private void btn_unHideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_unHideMouseClicked
+    private void btn_HidePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_HidePassMouseClicked
+        Icon Hide = new ImageIcon(getClass().getClassLoader().getResource("img/Hide.png"));
+        Icon UnHide = new ImageIcon(getClass().getClassLoader().getResource("img/UnHide.png"));
+        if (!PassShow) {
+            // Hiện Pass 
+            txt_Password.setEchoChar((char)0);
+            btn_HidePass.setIcon(UnHide);
+            PassShow = true;
+        } else {
+            // ẩn pass
+            txt_Password.setEchoChar('\u2022');
+            btn_HidePass.setIcon(Hide);
+            PassShow = false;
 
-    }//GEN-LAST:event_btn_unHideMouseClicked
+        }
+
+
+    }//GEN-LAST:event_btn_HidePassMouseClicked
 
     public static void main(String args[]) {
-        
+
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("tableview");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
@@ -340,16 +346,12 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
-    void Visible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close_Form;
+    private javax.swing.JLabel btn_HidePass;
     private javax.swing.JButton btn_Login;
     private javax.swing.JLabel btn_Reg;
-    private javax.swing.JLabel btn_unHide;
     private javax.swing.JCheckBox chx_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -363,4 +365,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_Password;
     private javax.swing.JPasswordField txt_UserName;
     // End of variables declaration//GEN-END:variables
+
+    void Visible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

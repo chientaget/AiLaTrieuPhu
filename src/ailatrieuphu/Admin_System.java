@@ -1,4 +1,3 @@
-
 package ailatrieuphu;
 
 import com.formdev.flatlaf.FlatClientProperties;
@@ -32,20 +31,20 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 public class Admin_System extends javax.swing.JFrame {
-    
+
     private int mouseX, mouseY;
     private boolean isFullScreen = false;
-    
+
     public Admin_System() {
         setUndecorated(true);
         initComponents();
         getContentPane().setBackground(Color.WHITE);
         LOAD();
-        
+
     }
-    
+
     void LOAD() {
-        
+
         makePanelDraggable(PL_heard);
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 4, 4));
 
@@ -54,14 +53,14 @@ public class Admin_System extends javax.swing.JFrame {
         EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
         CompoundBorder compoundBorder = new CompoundBorder(lineBorder, emptyBorder);
         PL_heard.setBorder(compoundBorder);
-        
+
         applyTableStyle(Tb_User);
         testData(Tb_User);
         testData(Tb_CauHoi);
         Tb_User.setSelectionBackground(new Color(102, 102, 255));
         Tb_CauHoi.setSelectionBackground(new Color(102, 102, 255));
     }
-    
+
     private void makePanelDraggable(javax.swing.JPanel panel) {
         panel.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,12 +69,12 @@ public class Admin_System extends javax.swing.JFrame {
                 mouseY = e.getY();
             }
         });
-        
+
         panel.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent evt) {
                 int x = evt.getXOnScreen() - mouseX;
                 int y = evt.getYOnScreen() - mouseY;
-                
+
                 setLocation(x, y);
             }
         });
@@ -109,7 +108,7 @@ public class Admin_System extends javax.swing.JFrame {
     private Object[] getRandomRow(String name) {
         DecimalFormat df = new DecimalFormat("#,##0.##");
         Random ran = new Random();
-        
+
         int id = ran.nextInt(1000, 9999);
         // Generate random username and password
         String username = generateRandomString(8);  // Change 8 to the desired length
@@ -118,30 +117,30 @@ public class Admin_System extends javax.swing.JFrame {
         // Generate random earnings
         double earnings = (ran.nextInt(9999999 - 9999) + 9999) * ran.nextDouble();
         String formattedEarnings = "$" + df.format(0).replace(",", ".");
-        
+
         return new Object[]{false, id, name, username, password, formattedEarnings};
     }
-    
+
     private String generateRandomString(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder sb = new StringBuilder(length);
         Random random = new Random();
-        
+
         for (int i = 0; i < length; i++) {
             int index = random.nextInt(characters.length());
             sb.append(characters.charAt(index));
         }
-        
+
         return sb.toString();
     }
 
     // chèn icon button
     private void applyTableStyle(JTable table) {
-        
+
         cmdAdd.setIcon(new FlatSVGIcon("tableview/icon/add.svg", 0.35f));
         cmdUpdate.setIcon(new FlatSVGIcon("tableview/icon/edit.svg", 0.35f));
         cmdDelete.setIcon(new FlatSVGIcon("tableview/icon/delete.svg", 0.35f));
-        
+
         txtSearch.putClientProperty(FlatClientProperties.TEXT_FIELD_TRAILING_ICON, new FlatSVGIcon("tableview/icon/search.svg", 0.35f));
         //  Change scroll style
         JScrollPane scroll = (JScrollPane) table.getParent().getParent();
@@ -150,7 +149,7 @@ public class Admin_System extends javax.swing.JFrame {
                 + "background:$Table.background;"
                 + "track:$Table.background;"
                 + "trackArc:999");
-        
+
         table.getTableHeader().putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
         table.putClientProperty(FlatClientProperties.STYLE_CLASS, "table_style");
 
@@ -162,13 +161,13 @@ public class Admin_System extends javax.swing.JFrame {
     // Create a Random instance
     Random random = new Random();
     DecimalFormat decimalFormat = new DecimalFormat("###,###,### VNĐ");
-    
+
     private TableCellRenderer getAlignmentCellRender(TableCellRenderer oldRender, boolean header) {
         return new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component com = oldRender.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                
+
                 if (com instanceof JLabel) {
                     JLabel label = (JLabel) com;
                     if (column == 0 || column == 4) {
@@ -184,7 +183,7 @@ public class Admin_System extends javax.swing.JFrame {
                             double earnings = 100000 + (random.nextDouble() * (150000000 - 100000));
                             // Format the earnings to display with periods and the "VNĐ" symbol
                             String formattedEarnings = decimalFormat.format(earnings);
-                            
+
                             if (earnings > 0) {
                                 com.setForeground(new Color(17, 182, 60));
                                 label.setText("+" + formattedEarnings);
@@ -205,7 +204,7 @@ public class Admin_System extends javax.swing.JFrame {
             }
         };
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -315,7 +314,7 @@ public class Admin_System extends javax.swing.JFrame {
         jLabel2.setText("Câu Hỏi:");
 
         jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextPane1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTextPane1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(jTextPane1);
 
         jLabel4.setText("Đáp án đúng");
@@ -338,6 +337,7 @@ public class Admin_System extends javax.swing.JFrame {
 
         jLabel7.setText("Đáp án 4");
 
+        txtSearch3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtSearch3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         btn_Add.setBackground(new java.awt.Color(0, 0, 0));
@@ -604,7 +604,10 @@ public class Admin_System extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PL_heard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,12 +625,14 @@ public class Admin_System extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_LogOutMouseClicked
-        dispose();// Đóng form
+        setVisible(false);
+        Login loggin = new Login();
+        loggin.setVisible(true);
     }//GEN-LAST:event_btn_LogOutMouseClicked
-    
+
 
     private void btn_modeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modeActionPerformed
-        
+
         if (!FlatLaf.isLafDark()) {
             EventQueue.invokeLater(() -> {
                 FlatAnimatedLafChange.showSnapshot();
@@ -635,7 +640,7 @@ public class Admin_System extends javax.swing.JFrame {
                 FlatLaf.updateUI();
                 FlatAnimatedLafChange.hideSnapshotWithAnimation();
             });
-            
+
             btn_mode.setText("Light");
         } else {
             EventQueue.invokeLater(() -> {
@@ -650,13 +655,13 @@ public class Admin_System extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modeActionPerformed
 
     private void cmdAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAddActionPerformed
-      addUser user = new addUser();
-      user.setVisible(true);
-       
+        addUser user = new addUser();
+        user.setVisible(true);
+
     }//GEN-LAST:event_cmdAddActionPerformed
-    
+
     public static void main(String args[]) {
-        
+
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("tableview");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
@@ -668,7 +673,7 @@ public class Admin_System extends javax.swing.JFrame {
                 new Admin_System().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

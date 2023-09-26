@@ -127,6 +127,9 @@
         <Property name="text" type="java.lang.String" value="Ch&#x1a1;i L&#x1ea1;i"/>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ResetGameActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_ResetGame.setBorderPainted(false);&#xa;btn_ResetGame.setFocusPainted(false);"/>
       </AuxValues>
