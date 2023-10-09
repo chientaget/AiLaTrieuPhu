@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AiLaTrieuPhu">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/AiLaTrieuPhu.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
