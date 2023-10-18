@@ -1,0 +1,3 @@
+- Thư viện sử dụng được lưu trong thu mục nbproject
+- File Database ailatrieuphu-db.sql
+- File dự phòng trường hợp Clone về hoặc Down về khong chạy được 
